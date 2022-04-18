@@ -105,7 +105,7 @@ public class ImageCorrection {
 
         // creates an empty image
         Size s = new Size(this.imageValues.length, this.imageValues[0].length);
-        Mat image_x = new Mat(s, CvType.CV_64FC1);
+        Mat image = new Mat(s, CvType.CV_64FC1);
 
 
         // puts the values into our new matrix
@@ -113,11 +113,11 @@ public class ImageCorrection {
             for (int y = 0; y < this.imageValues[0].length; y++) {
 
                 // adds the value to the image
-                image_x.put(x, y,this.imageValues[x][y] * 255);
+                image.put(x, y,this.imageValues[x][y] * 255);
             }
         }
 
         // writes to a file
-        new Imgcodecs().imwrite(fileName, image_x);
+        new Imgcodecs().imwrite(fileName, image);
     }
 }

@@ -90,7 +90,7 @@ public class main {
         // corrects the image
         ImageCorrection imc = new ImageCorrection(matrix,  connectivityType, f);
         imc.CorrectImage();
-        imc.WriteToFile("lenna_fixed_part_2.png");
+        imc.WriteToFile("refactoredImage.png");
     }
 
     /***

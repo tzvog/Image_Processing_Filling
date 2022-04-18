@@ -30,5 +30,6 @@ assuming that we are dealing with a single whole and the pixels are not too far 
 all we do would be approximate a single whole in the center of our whole
 get the weight color based upon the given weight function at that point
 and fill the rest of the holes with the given approximation color
-finding the center whole would be O(1) approximating it would be cn (as explained above) filling the rest
-of the whole would be O(n) giving us a total of O(1 + cn + n) = O(n)
+finding the center whole could be O(n) approximating the color
+it would be cn (as explained above) filling the rest
+of the whole would be O(n) giving us a total of O(n + cn + n) = O(n)
