@@ -35,7 +35,7 @@ public class main {
         Imgproc.cvtColor(maskRgb, mask, Imgproc.COLOR_RGB2GRAY);
 
         // inits the 2-d array of the image to hold scaled values
-        double imageWithHoleGreyScale [][] = new double[image.width()][image.height()];
+        double [][] imageWithHoleGreyScale  = new double[image.width()][image.height()];
 
         // puts the values into our new matrix
         for (int x = 0; x < image.width(); x++) {
@@ -58,13 +58,10 @@ public class main {
     }
 
 
-
     /***
-     * main function
-     * @param args the arguments accepted by the main function
+     * an console application for the user to use our app
      */
-    public static void main(String[] args) {
-
+    private static void consoleApplication() {
 
         // asking the user for the command line utility
         Scanner myObj = new Scanner(System.in);
@@ -75,25 +72,32 @@ public class main {
         System.out.println("Enter mask file name");
         String maskFileName = myObj.nextLine();
 
-        System.out.println("Enter z");
+        System.out.println("Enter z number we want to work with");
         double z = myObj.nextDouble();
 
-        System.out.println("Enter epsilon");
+        System.out.println("Enter epsilon we want for our weight function");
         double epsilon = myObj.nextDouble();
 
-        System.out.println("Enter Connection Type");
+        System.out.println("Enter Connection Type as number (currently only support 4,8)");
         int connectivityType = myObj.nextInt();
 
 
         double [][] matrix = loadImage(imageFileName,
                 maskFileName);
 
-        WeightFunction f = new WeightFunction(z, epsilon);
+        WeightFunction f = new DefaultWeightFunction(z, epsilon);
 
         // corrects the image
         ImageCorrection imc = new ImageCorrection(matrix,  connectivityType, f);
         imc.CorrectImage();
         imc.WriteToFile("lenna_fixed_part_2.png");
+    }
 
+    /***
+     * main function
+     * @param args the arguments accepted by the main function
+     */
+    public static void main(String[] args) {
+        consoleApplication();
     }
 }
